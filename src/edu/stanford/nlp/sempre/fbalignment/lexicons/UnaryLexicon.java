@@ -121,7 +121,7 @@ public class UnaryLexicon {
       Map<String, Map<Pair<Formula, String>, UnaryLexicalEntry>> nlToFormulaAndAlignmentMap) {
     LogInfo.begin_track("Loading lexicon file " + lexiconFileName);
 
-    for (String line : IOUtils.readLines(lexiconFileName)) {
+    for (String line : IOUtils.readLines(lexiconFileName, "UTF-8")) {
       LexiconValue lv = Json.readValueHard(line, LexiconValue.class);
       addEntry(lv.lexeme, lv.source, lv.formula, lv.features, nlToFormulaAndAlignmentMap);
     }
