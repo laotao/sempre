@@ -7,6 +7,7 @@ DEPS := $(shell ls lib/*.jar) $(shell find src -name "*.java")
 classes: $(DEPS)
 	mkdir -p classes
 	javac -d classes -cp 'lib/*' -Xlint:all `find src -name "*.java"`
+	cp -r src/conf classes
 	touch classes
 
 $(NAME).jar: classes
