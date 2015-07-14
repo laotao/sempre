@@ -1,21 +1,19 @@
-@prefix fb: <http://rdf.freebase.com/ns/>.
+<http://rdf.freebase.com/ns/en.los_angeles>	<http://rdf.freebase.com/ns/location.location.containedby>	<http://rdf.freebase.com/ns/en.california>.
+<http://rdf.freebase.com/ns/en.san_francisco>	<http://rdf.freebase.com/ns/location.location.containedby> <http://rdf.freebase.com/ns/en.california>.
+<http://rdf.freebase.com/ns/en.mount_whitney>	<http://rdf.freebase.com/ns/location.location.containedby>	<http://rdf.freebase.com/ns/en.california>.
 
-fb:en.los_angeles	fb:location.location.containedby	fb:en.california.
-fb:en.san_francisco	fb:location.location.containedby	fb:en.california.
-fb:en.mount_whitney	fb:location.location.containedby	fb:en.california.
+<http://rdf.freebase.com/ns/en.seattle>	<http://rdf.freebase.com/ns/type.object.type>	<http://rdf.freebase.com/ns/location.citytown>.
+<http://rdf.freebase.com/ns/en.san_francisco>	<http://rdf.freebase.com/ns/type.object.type>	<http://rdf.freebase.com/ns/location.citytown>.
+<http://rdf.freebase.com/ns/en.los_angeles>	<http://rdf.freebase.com/ns/type.object.type>	<http://rdf.freebase.com/ns/location.citytown>.
+<http://rdf.freebase.com/ns/en.mount_whitney>	<http://rdf.freebase.com/ns/type.object.type>	<http://rdf.freebase.com/ns/geography.mountain>.
+<http://rdf.freebase.com/ns/en.california>	<http://rdf.freebase.com/ns/type.object.type>	<http://rdf.freebase.com/ns/location.us_state>.
 
-fb:en.seattle	fb:type.object.type	fb:location.citytown.
-fb:en.san_francisco	fb:type.object.type	fb:location.citytown.
-fb:en.los_angeles	fb:type.object.type	fb:location.citytown.
-fb:en.mount_whitney	fb:type.object.type	fb:geography.mountain.
-fb:en.california	fb:type.object.type	fb:location.us_state.
+<http://rdf.freebase.com/ns/en.seattle>	<http://rdf.freebase.com/ns/type.object.name>	"Seattle"@en.
+<http://rdf.freebase.com/ns/en.san_francisco>	<http://rdf.freebase.com/ns/type.object.name>	"San Francisco"@en.
+<http://rdf.freebase.com/ns/en.los_angeles>	<http://rdf.freebase.com/ns/type.object.name>	"Los Angeles"@en.
+<http://rdf.freebase.com/ns/en.mount_whitney>	<http://rdf.freebase.com/ns/type.object.name>	"Mount Whitney"@en.
+<http://rdf.freebase.com/ns/en.california>	<http://rdf.freebase.com/ns/type.object.name>	"California"@en.
 
-fb:en.seattle	fb:type.object.name	"Seattle"@en.
-fb:en.san_francisco	fb:type.object.name	"San Francisco"@en.
-fb:en.los_angeles	fb:type.object.name	"Los Angeles"@en.
-fb:en.mount_whitney	fb:type.object.name	"Mount Whitney"@en.
-fb:en.california	fb:type.object.name	"California"@en.
-
-fb:en.seattle	fb:location.location.area	"369.2"^^xsd:double.
-fb:en.san_francisco	fb:location.location.area	"600.6"^^xsd:double.
-fb:en.los_angeles	fb:location.location.area	"1301.97"^^xsd:double.
+<http://rdf.freebase.com/ns/en.seattle>	<http://rdf.freebase.com/ns/location.location.area>	"369.2"^^xsd:double.
+<http://rdf.freebase.com/ns/en.san_francisco>	<http://rdf.freebase.com/ns/location.location.area>	"600.6"^^xsd:double.
+<http://rdf.freebase.com/ns/en.los_angeles>	<http://rdf.freebase.com/ns/location.location.area>	"1301.97"^^xsd:double.
