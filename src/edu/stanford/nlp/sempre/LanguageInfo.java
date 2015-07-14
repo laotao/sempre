@@ -16,6 +16,8 @@ import fig.basic.LispTree;
 import fig.basic.Option;
 import fig.basic.MemUsage;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
 
 /**
@@ -27,7 +29,7 @@ import java.util.*;
 public class LanguageInfo implements MemUsage.Instrumented {
   public static class Options {
     @Option(gloss="What CoreNLP annotators to run")
-    public List<String> annotators = Lists.newArrayList("tokenize", "ssplit", "pos", "lemma", "ner");
+    public List<String> annotators = Lists.newArrayList("tokenize", "ssplit", "pos", "ner");
 
     @Option(gloss="Whether to use CoreNLP annotators")
     public boolean useAnnotators = true;
@@ -87,15 +89,26 @@ public class LanguageInfo implements MemUsage.Instrumented {
 
   public static void initModels() {
     if (pipeline != null) return;
+//  pipeline = new StanfordCoreNLP("StanfordCoreNLP-chinese.properties");
+    
     Properties props = new Properties();
-    props.put("annotators", Joiner.on(',').join(opts.annotators));
-    if (opts.caseSensitive) {
-      props.put("pos.model", "edu/stanford/nlp/models/pos-tagger/english-bidirectional/english-bidirectional-distsim.tagger");
-      props.put("ner.model", "edu/stanford/nlp/models/ner/english.all.3class.distsim.crf.ser.gz,edu/stanford/nlp/models/ner/english.conll.4class.distsim.crf.ser.gz");
-    } else {
-      props.put("pos.model", "edu/stanford/nlp/models/pos-tagger/english-caseless-left3words-distsim.tagger");
-      props.put("ner.model", "edu/stanford/nlp/models/ner/english.all.3class.caseless.distsim.crf.ser.gz,edu/stanford/nlp/models/ner/english.conll.4class.caseless.distsim.crf.ser.gz");
-    }
+//    props.put("annotators", Joiner.on(',').join(opts.annotators));
+//    if (opts.caseSensitive) {
+//      props.put("pos.model", "edu/stanford/nlp/models/pos-tagger/english-bidirectional/english-bidirectional-distsim.tagger");
+//      props.put("ner.model", "edu/stanford/nlp/models/ner/english.all.3class.distsim.crf.ser.gz,edu/stanford/nlp/models/ner/english.conll.4class.distsim.crf.ser.gz");
+//    } else {
+//      props.put("pos.model", "edu/stanford/nlp/models/pos-tagger/english-caseless-left3words-distsim.tagger");
+//      props.put("ner.model", "edu/stanford/nlp/models/ner/english.all.3class.caseless.distsim.crf.ser.gz,edu/stanford/nlp/models/ner/english.conll.4class.caseless.distsim.crf.ser.gz");
+//    }
+//    pipeline = new StanfordCoreNLP(props);
+    
+	InputStream im = ClassLoader.getSystemResourceAsStream(
+            "conf/model.properties");
+	try {
+		props.load(im);
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
     pipeline = new StanfordCoreNLP(props);
   }
 
@@ -188,7 +201,7 @@ public class LanguageInfo implements MemUsage.Instrumented {
                 AUX_VERB_TAG :
                   token.get(PartOfSpeechAnnotation.class));
         nerTags.add(token.get(NamedEntityTagAnnotation.class));
-        lemmaTokens.add(token.get(LemmaAnnotation.class));
+        lemmaTokens.add(wordLower);
         nerValues.add(token.get(NormalizedNamedEntityTagAnnotation.class));
       }
     } else {
