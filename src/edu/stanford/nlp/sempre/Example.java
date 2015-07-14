@@ -264,17 +264,32 @@ public class Example {
   }
 
   public void log() {
-    LogInfo.begin_track("Example: %s", utterance);
-    LogInfo.logs("Tokens: %s", getTokens());
-    LogInfo.logs("Lemmatized tokens: %s", getLemmaTokens());
-    LogInfo.logs("POS tags: %s", languageInfo.posTags);
-    LogInfo.logs("NER tags: %s", languageInfo.nerTags);
-    LogInfo.logs("NER values: %s", languageInfo.nerValues);
-    if (targetFormula != null)
-      LogInfo.logs("targetFormula: %s", targetFormula);
-    if (targetValue != null)
-      LogInfo.logs("targetValue: %s", targetValue);
-    LogInfo.end_track();
+		String encoding = System.getProperty("file.encoding");
+		if ("GBK".equalsIgnoreCase(encoding)) {
+	    System.out.println("Example: " +utterance);
+	    System.out.println("Tokens: "+getTokens());
+	    System.out.println("Lemmatized tokens: "+getLemmaTokens());
+	    System.out.println("POS tags: "+languageInfo.posTags);
+	    System.out.println("NER tags: "+languageInfo.nerTags);
+	    System.out.println("NER values: "+ languageInfo.nerValues);
+	    if (targetFormula != null)
+	    	System.out.println("targetFormula: "+ targetFormula);
+	    if (targetValue != null)
+	    	System.out.println("targetValue: "+targetValue);
+		}
+		else {
+			LogInfo.begin_track("Example: %s", utterance);
+			LogInfo.logs("Tokens: %s", getTokens());
+			LogInfo.logs("Lemmatized tokens: %s", getLemmaTokens());
+			LogInfo.logs("POS tags: %s", languageInfo.posTags);
+			LogInfo.logs("NER tags: %s", languageInfo.nerTags);
+			LogInfo.logs("NER values: %s", languageInfo.nerValues);
+			if (targetFormula != null)
+				LogInfo.logs("targetFormula: %s", targetFormula);
+			if (targetValue != null)
+				LogInfo.logs("targetValue: %s", targetValue);
+			LogInfo.end_track();
+		}
   }
 
   public void clearPredDerivations() {
