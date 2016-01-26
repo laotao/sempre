@@ -16,3 +16,5 @@ lib/fb_data/93.exec/schema.ttl.bz2
 lib/libjcsi.jar
 
 The last thing to do is to produce entities in the "lib/lucene/4.4" indexes using the fbalignment.index.FbEntityIndexer class, as discussed in https://github.com/percyliang/sempre/issues/27#issuecomment-120299392 
+
+./run @mode=simple-sparql @sparqlserver=localhost:3001
